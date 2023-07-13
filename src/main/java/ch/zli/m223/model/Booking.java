@@ -4,10 +4,14 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.transaction.Status;
+
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -26,8 +30,9 @@ public class Booking {
     @Column(nullable = false)
     private LocalDate endDate;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private boolean isCanceled;
+    private Status status;
 
     @ManyToOne(optional = false)
     @Fetch(FetchMode.JOIN)
@@ -71,8 +76,12 @@ public class Booking {
         return endDate;
     }
 
-    public boolean isCanceled() {
-        return isCanceled;
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public void setUser(AppUser user) {
@@ -101,5 +110,11 @@ public class Booking {
 
     public int getDuration() {
         return duration;
+    }
+
+    public enum Status {
+        ACCEPTED,
+        PENDING,
+        DECLINED
     }
 }
