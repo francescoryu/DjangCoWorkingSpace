@@ -31,7 +31,7 @@ public class Booking {
 
     @ManyToOne(optional = false)
     @Fetch(FetchMode.JOIN)
-    private User user;
+    private AppUser user;
 
     @Column(nullable = false)
     private boolean isAdmin;
@@ -75,11 +75,11 @@ public class Booking {
         return isCanceled;
     }
 
-    public void setUser(User user) {
+    public void setUser(AppUser user) {
         this.user = user;
     }
 
-    public User getUser() {
+    public AppUser getUser() {
         return user;
     }
 

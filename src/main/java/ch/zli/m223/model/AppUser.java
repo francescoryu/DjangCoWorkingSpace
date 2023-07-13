@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "ApplicationUser.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")
+    @NamedQuery(name = "AppUser.findByEmail", query = "SELECT u FROM AppUser u WHERE u.email = :email")
 })
-public class User {
+public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,8 +43,8 @@ public class User {
     @Column
     private int age;
 
-    @OneToMany(mappedBy = "booking")
-    @JsonIgnoreProperties("booking")
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
     @Fetch(FetchMode.JOIN)
     private Set<Booking> bookings;
 
