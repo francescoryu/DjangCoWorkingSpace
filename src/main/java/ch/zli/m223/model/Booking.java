@@ -45,4 +45,61 @@ public class Booking {
     @Column
     private int duration;
 
+//-------------------------------------------------------------------------------------
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public boolean isCanceled() {
+        return isCanceled;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public boolean wantsBeamer() {
+        return wantsBeamer;
+    }
+
+    public boolean wantsNewsLetter() {
+        return wantsNewsLetter;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
 }
