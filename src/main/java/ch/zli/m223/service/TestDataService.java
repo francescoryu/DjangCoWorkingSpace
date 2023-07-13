@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import ch.zli.m223.controller.AppUserController;
 import ch.zli.m223.model.AppUser;
 import ch.zli.m223.model.Booking;
 import io.quarkus.arc.profile.IfBuildProfile;
@@ -22,6 +23,9 @@ public class TestDataService {
   @Inject
   EntityManager entityManager;
 
+  @Inject
+  AppUserController appUserController;
+
   @Transactional
   void generateTestData(@Observes StartupEvent event) {
 
@@ -31,7 +35,7 @@ public class TestDataService {
     user1.setEmail("max@muster.ch");
     user1.setAge(15);
     user1.setPassword("pass1");
-    entityManager.persist(user1);
+    appUserController.create(user1);
     
     var user2 = new AppUser();
     user2.setFirstName("Alice");
@@ -39,7 +43,7 @@ public class TestDataService {
     user2.setEmail("alice@example.com");
     user2.setAge(28);
     user2.setPassword("pass2");
-    entityManager.persist(user2);
+    appUserController.create(user2);
 
     var user3 = new AppUser();
     user3.setFirstName("Michael");
@@ -47,7 +51,7 @@ public class TestDataService {
     user3.setEmail("michael@example.com");
     user3.setAge(40);
     user3.setPassword("pass3");
-    entityManager.persist(user3);
+    appUserController.create(user3);
 
   }
 }

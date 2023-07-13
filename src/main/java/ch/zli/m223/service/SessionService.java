@@ -25,10 +25,17 @@ public class SessionService {
 
     try {
       if (principal.isPresent() && principal.get().getPassword().equals(credential.getPassword())) {
+
+        HashSet<String> set = new HashSet<>();
+        if (principal.get().isAdmin()) {
+          set.add("Admin");
+        }
+        set.add("User");
+
         String token = Jwt
             .issuer("https://zli.example.com/")
             .upn(credential.getEmail())
-            .groups(new HashSet<>(Arrays.asList("User", "Admin")))
+            .groups(set)
             .expiresIn(Duration.ofHours(12))
             .sign();
         return Response

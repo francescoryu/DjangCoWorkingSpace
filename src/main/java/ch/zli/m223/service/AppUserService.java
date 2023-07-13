@@ -20,7 +20,9 @@ public class AppUserService {
         if (findAll().size() == 0) {
             user.setAdmin(true);
         }
-        return entityManager.merge(user);
+        entityManager.persist(user);
+
+        return user;
     }
 
     @Transactional
