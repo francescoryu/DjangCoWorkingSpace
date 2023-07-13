@@ -32,6 +32,12 @@ public class AppUserService {
     }
 
     @Transactional
+    public AppUser getUser(Long id) {
+        var entity = entityManager.find(AppUser.class, id);
+        return entity;
+    }
+
+    @Transactional
     public AppUser updateUser(Long id, AppUser user) {
         user.setId(id);
         return entityManager.merge(user);

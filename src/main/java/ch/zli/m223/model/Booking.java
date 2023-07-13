@@ -37,9 +37,6 @@ public class Booking {
     @Fetch(FetchMode.JOIN)
     private AppUser user;
 
-    @Column(nullable = false)
-    private boolean isAdmin;
-
     @Column
     private boolean wantsBeamer;
 
@@ -91,12 +88,16 @@ public class Booking {
         return user;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public void setWantsBeamer(boolean wantsBeamer) {
+        this.wantsBeamer = wantsBeamer;
     }
 
     public boolean wantsBeamer() {
         return wantsBeamer;
+    }
+
+    public void setWantsNewsLetter(boolean wantsNewsLetter) {
+        this.wantsNewsLetter = wantsNewsLetter;
     }
 
     public boolean wantsNewsLetter() {

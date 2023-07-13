@@ -17,17 +17,27 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
+import ch.zli.m223.model.AppUser;
 import ch.zli.m223.model.Booking;
 import ch.zli.m223.service.BookingService;
 
 @Path("/bookings")
 @Tag(name = "Bookings", description = "Handling of bookings")
-@RolesAllowed({"User", "Admin"})
 public class BookingController {
     @Inject
     BookingService bookingService;
 
+    @Path("/{id}")
     @GET
+    @RolesAllowed({ "Admin" })
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Booking getUser(@PathParam("id") Long id, Booking booking) {
+        return bookingService.getBooking(id);
+    }
+
+    @GET
+    @RolesAllowed({"Admin"})
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(
         summary = "Index all Bookings",
@@ -59,6 +69,7 @@ public class BookingController {
     }
 
     @Path("/{id}")
+    @RolesAllowed({"Admin"})
     @PUT
     @Operation(
         summary = "Updates an booking",

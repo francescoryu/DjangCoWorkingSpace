@@ -1,5 +1,6 @@
 package ch.zli.m223.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,8 +12,10 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import ch.zli.m223.controller.AppUserController;
+import ch.zli.m223.controller.BookingController;
 import ch.zli.m223.model.AppUser;
 import ch.zli.m223.model.Booking;
+import ch.zli.m223.model.Booking.Status;
 import io.quarkus.arc.profile.IfBuildProfile;
 import io.quarkus.runtime.StartupEvent;
 
@@ -25,6 +28,9 @@ public class TestDataService {
 
   @Inject
   AppUserController appUserController;
+
+  @Inject
+  BookingController bookingController;
 
   @Transactional
   void generateTestData(@Observes StartupEvent event) {
@@ -52,6 +58,36 @@ public class TestDataService {
     user3.setAge(40);
     user3.setPassword("pass3");
     appUserController.create(user3);
+    
+    //----------------------------------------------------------
+
+    var booking1 = new Booking();
+    booking1.setStartDate(LocalDate.now());
+    booking1.setEndDate(LocalDate.now().plusDays(8));
+    booking1.setStatus(Status.ACCEPTED);
+    booking1.setWantsBeamer(true);
+    booking1.setWantsNewsLetter(false);
+    booking1.setUser(user1);
+    bookingController.create(booking1);
+
+    var booking2 = new Booking();
+    booking2.setStartDate(LocalDate.now().plusDays(10));
+    booking2.setEndDate(LocalDate.now().plusDays(15));
+    booking2.setStatus(Status.PENDING);
+    booking2.setWantsBeamer(false);
+    booking2.setWantsNewsLetter(true);
+    booking2.setUser(user2);
+    bookingController.create(booking2);
+
+    var booking4 = new Booking();
+    booking4.setStartDate(LocalDate.now().plusDays(3));
+    booking4.setEndDate(LocalDate.now().plusDays(7));
+    booking4.setStatus(Status.DECLINED);
+    booking4.setWantsBeamer(false);
+    booking4.setWantsNewsLetter(true);
+    booking4.setUser(user3);
+    bookingController.create(booking4);
+
 
   }
 }

@@ -40,6 +40,15 @@ public class AppUserController {
       return userService.findAll();
   }
 
+  @Path("/{id}")
+  @GET
+  @RolesAllowed({ "Admin" })
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
+  public AppUser getUser(@PathParam("id") Long id, AppUser user) {
+    return userService.getUser(id);
+  }
+
   @POST
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
