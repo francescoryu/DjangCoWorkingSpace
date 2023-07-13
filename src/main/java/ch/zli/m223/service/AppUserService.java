@@ -17,6 +17,9 @@ public class AppUserService {
 
     @Transactional
     public AppUser createUser(AppUser user) {
+        if (findAll().size() == 0) {
+            user.setAdmin(true);
+        }
         return entityManager.merge(user);
     }
 

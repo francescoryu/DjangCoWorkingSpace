@@ -2,7 +2,6 @@ package ch.zli.m223.controller;
 
 import java.util.List;
 
-import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -21,7 +20,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import ch.zli.m223.model.Booking;
 import ch.zli.m223.service.BookingService;
 
-@Path("/Bookings")
+@Path("/bookings")
 @Tag(name = "Bookings", description = "Handling of bookings")
 @RolesAllowed({"User", "Admin"})
 public class BookingController {
@@ -36,5 +35,36 @@ public class BookingController {
     )
     public List<Booking> index() {
         return bookingService.findAll();
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Operation(
+        summary = "Creates a new Booking",
+        description = "Creates a new category and returns the newly added Booking."
+    )
+    public Booking create(Booking booking) {
+        return bookingService.createBooking(booking);
+    }
+
+    @Path("/{id}")
+    @DELETE
+    @Operation(
+        summary = "Deletes a booking",
+        description = "Deletes a booking by its id"
+    )
+    public void delete(@PathParam("id") Long id) {
+        bookingService.deleteBooking(id);
+    }
+
+    @Path("/{id}")
+    @PUT
+    @Operation(
+        summary = "Updates an booking",
+        description = "Updates a booking by its id"
+    )
+    public Booking update(@PathParam("id") Long id, Booking booking) {
+        return bookingService.updateBooking(id, booking);
     }
 }

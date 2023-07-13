@@ -47,6 +47,9 @@ public class AppUser {
     @JsonIgnoreProperties("user")
     @Fetch(FetchMode.JOIN)
     private Set<Booking> bookings;
+    
+    @Column(nullable = false)
+    private boolean isAdmin;
 
     public void setId(Long id) {
         this.id = id;
@@ -102,5 +105,13 @@ public class AppUser {
 
     public Set<Booking> getBookings() {
         return bookings;
+    }
+    
+    public void setAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+    
+    public boolean isAdmin() {
+        return isAdmin;
     }
 }

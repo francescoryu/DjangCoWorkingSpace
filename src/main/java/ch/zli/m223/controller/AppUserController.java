@@ -24,7 +24,7 @@ import ch.zli.m223.service.AppUserService;
 
 @Path("/users")
 @Tag(name = "Users", description = "Handling of users")
-@RolesAllowed({ "User", "Admin" })
+//@RolesAllowed({ "User", "Admin" })
 public class AppUserController {
   
   @Inject
