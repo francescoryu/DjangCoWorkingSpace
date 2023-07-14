@@ -2,17 +2,13 @@
 
 Djan-Co Working Space ist ein Projekt, wo man sich Räume für das autonome Arbeiten mieten kann.
 
-## Erste Schritte
+## Erste Schritte für Postman
 
-1. Erstelle eine Kopie (fork) von diesem Projekt.
-1. Stelle sicher, dass Docker installiert ist und läuft.
-1. Stelle sicher, dass Visual Studio Code und die Erweiterung Remote Container installiert ist.
-1. Klone (clone) das Projekt lokal, um damit arbeiten zu können.
-1. Öffne das Projekt mit Visual Studio Code.
-1. Öffne das Projekt im Entwicklungscontainer.
-1. Starte das Projekt mit dem Kommando `Quarkus: Debug current Quarkus Project`
-1. Probiere die Client-Applikation unter http://localhost:8080 aus.
-1. Schaue die API auf http://localhost:8080/q/swagger-ui/ an.
+1. Bei Postman gehen Sie oben links auf "import".
+2. Dann ziehen Sie das File in die "Drag and Drop" Zone.
+3. Dann gehen sie auf die drei Punkte neben der Collection und drücken Sie Run Collection.
+
+
 
 ## Datenbank
 
@@ -27,6 +23,5 @@ Die Daten werden in einer PostgreSQL-Datenbank gespeichert. In der Entwicklungsu
  - Username: `postgres`
  - Password: `postgres`
 
-## Automatische Tests
-
-Die automatischen Tests können mit `./mvnw quarkus:test` ausgeführt werden. Für die automatischen Tests wird nicht die PostgreSQL-Datenbank verwendet, sondern eine H2-Datenbank, welche sich im Arbeitsspeicher während der Ausführung befindet.
+## Quelle
+ChatGPT

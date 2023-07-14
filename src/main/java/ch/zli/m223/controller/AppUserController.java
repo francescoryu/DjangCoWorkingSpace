@@ -23,6 +23,7 @@ import ch.zli.m223.service.AppUserService;
 
 
 @Path("/users")
+@RolesAllowed({"Admin", "User"})
 @Tag(name = "Users", description = "Handling of users")
 public class AppUserController {
   
@@ -30,7 +31,7 @@ public class AppUserController {
   AppUserService userService;
 
   @GET
-  @RolesAllowed({ "Admin" })
+  @RolesAllowed({"Admin"})
   @Produces(MediaType.APPLICATION_JSON)
   @Operation(
       summary = "Index all users.", 
@@ -41,8 +42,8 @@ public class AppUserController {
   }
 
   @Path("/{id}")
+  @RolesAllowed({"Admin"})
   @GET
-  @RolesAllowed({ "Admin" })
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
   public AppUser getUser(@PathParam("id") Long id, AppUser user) {
@@ -62,8 +63,8 @@ public class AppUserController {
   }
 
   @Path("/{id}")
-  @RolesAllowed({ "Admin" })
   @DELETE
+  @RolesAllowed({"Admin"})
   @Operation(
       summary = "Deletes an user.",
       description = "Deletes an user by its id."
@@ -73,8 +74,8 @@ public class AppUserController {
   }
 
   @Path("/{id}")
-  @RolesAllowed({ "Admin" })
   @PUT
+  
   @Operation(
       summary = "Updates an user.",
       description = "Updates an user by its id."

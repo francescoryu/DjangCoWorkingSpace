@@ -1,6 +1,7 @@
 package ch.zli.m223.service;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
 
@@ -35,7 +36,7 @@ public class SessionService {
             .issuer("https://zli.example.com/")
             .upn(credential.getEmail())
             .groups(set)
-            .expiresIn(Duration.ofHours(12))
+            .expiresIn(Duration.ofHours(24))
             .sign();
         return Response
             .ok(principal.get())
