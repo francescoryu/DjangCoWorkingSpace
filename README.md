@@ -1,6 +1,6 @@
-# Übungsprojekt: Punch Clock
+# M223 Projekt Djan-Co Working Space
 
-Punch Clock ist ein Zeiterfassungssystem, welches mit Quarkus entwickelt wird.
+Djan-Co Working Space ist ein Projekt, wo man sich Räume für das autonome Arbeiten mieten kann.
 
 ## Erste Schritte
 

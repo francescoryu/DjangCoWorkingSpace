@@ -1,4 +1,4 @@
-# punch-clock Project
+# Djan-Co Working Space Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 

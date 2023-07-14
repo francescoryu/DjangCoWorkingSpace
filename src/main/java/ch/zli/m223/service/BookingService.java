@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import ch.zli.m223.model.AppUser;
 import ch.zli.m223.model.Booking;
 
 @ApplicationScoped
